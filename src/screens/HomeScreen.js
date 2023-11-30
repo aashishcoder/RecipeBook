@@ -34,6 +34,7 @@ export default function HomeScreen() {
       console.log('error: ',err.message);
     }
   }
+  
   const getRecipes = async (category="Beef")=>{
     try{
       const response = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${category}`);
@@ -45,6 +46,7 @@ export default function HomeScreen() {
       console.log('error: ',err.message);
     }
   }
+  
   return (
     <View className="flex-1 bg-white">
       <StatusBar style="dark" />
@@ -56,17 +58,17 @@ export default function HomeScreen() {
         {/* avatar and bell icon */}
         <View className="mx-4 flex-row justify-between items-center mb-2">
           <Image source={require('../../assets/images/avatar.png')} style={{height: hp(5), width: hp(5.5)}} />
-          <BellIcon size={hp(4)} color="gray" />
+          <BellIcon size={hp(4)} color="black" />
         </View>
 
         {/* greetings and punchline */}
         <View className="mx-4 space-y-2 mb-2">
-          <Text style={{fontSize: hp(1.7)}} className="text-neutral-600">Hello, Noman!</Text>
+          <Text style={{fontSize: hp(1.7)}} className="text-neutral-600">Hello, User!</Text>
           <View>
-            <Text style={{fontSize: hp(3.8)}} className="font-semibold text-neutral-600">Make your own food,</Text>
+            <Text style={{fontSize: hp(3.8)}} className="font-semibold text-neutral-600">Make delicious food,</Text>
           </View>
           <Text style={{fontSize: hp(3.8)}} className="font-semibold text-neutral-600">
-            stay at <Text className="text-amber-400">home</Text>
+            at your <Text className="text-amber-600">Home</Text>
           </Text>
         </View>
 

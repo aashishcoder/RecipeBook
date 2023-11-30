@@ -15,8 +15,8 @@ export default function WelcomeScreen() {
     useEffect(()=>{
         ring1padding.value = 0;
         ring2padding.value = 0;
-        setTimeout(()=> ring1padding.value = withSpring(ring1padding.value+hp(5)), 100);
-        setTimeout(()=> ring2padding.value = withSpring(ring2padding.value+hp(5.5)), 300);
+        setTimeout(()=> ring1padding.value = withSpring(ring1padding.value+hp(4)), 100);
+        setTimeout(()=> ring2padding.value = withSpring(ring2padding.value+hp(4.5)), 300);
 
         setTimeout(()=> navigation.navigate('Home'), 2500)
     },[])
@@ -35,10 +35,10 @@ export default function WelcomeScreen() {
       {/* title and punchline */}
       <View className="flex items-center space-y-2">
         <Text style={{fontSize: hp(7)}} className="font-bold text-white tracking-widest">
-            Foody
+            FoodScape
         </Text>
         <Text style={{fontSize: hp(2)}} className="font-medium text-white tracking-widest">
-            Food is always right
+            You Can't Escape Food !
         </Text>
       </View>
     </View>
