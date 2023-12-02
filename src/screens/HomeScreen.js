@@ -51,7 +51,7 @@ export default function HomeScreen() {
   const handleSearch = async (text) => {
     setSearchText(text);
     try {
-      const response = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${text}`);
+      const response = await axios.get(`https://themealdb.com/api/json/v1/1/search.php?s=${text}`);
       if (response && response.data) {
         setMeals(response.data.meals);
       }
