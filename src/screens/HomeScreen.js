@@ -11,6 +11,7 @@ export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState('Beef');
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
+  const [searchText, setSearchText] = useState('');
 
   useEffect(()=>{
     getCategories();
@@ -46,6 +47,18 @@ export default function HomeScreen() {
       console.log('error: ',err.message);
     }
   }
+
+  const handleSearch = async (text) => {
+    setSearchText(text);
+    try {
+      const response = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${text}`);
+      if (response && response.data) {
+        setMeals(response.data.meals);
+      }
+    } catch (err) {
+      console.log('error: ', err.message);
+    }
+  }
   
   return (
     <View className="flex-1 bg-white">
@@ -70,20 +83,24 @@ export default function HomeScreen() {
           <Text style={{fontSize: hp(3.8)}} className="font-semibold text-neutral-600">
             at your <Text className="text-amber-600">Home</Text>
           </Text>
-        </View>
+</View>
 
-        {/* search bar */}
-        <View className="mx-4 flex-row items-center rounded-full bg-black/5 p-[6px]">
-          <TextInput
-            placeholder='Search any recipe'
-            placeholderTextColor={'gray'}
-            style={{fontSize: hp(1.7)}}
-            className="flex-1 text-base mb-1 pl-3 tracking-wider"
-          />
-          <View className="bg-white rounded-full p-3">
-            <MagnifyingGlassIcon size={hp(2.5)} strokeWidth={3} color="gray" />
-          </View>
-        </View>
+
+
+            <View className="mx-4 flex-row items-center rounded-full bg-black/5 p-[6px]">
+              <TextInput
+                placeholder='Search any recipe'
+                placeholderTextColor={'gray'}
+                style={{ fontSize: hp(1.7) }}
+                className="flex-1 text-base mb-1 pl-3 tracking-wider"
+                onChangeText={handleSearch}
+              />
+              <View className="bg-white rounded-full p-3">
+                <MagnifyingGlassIcon size={hp(2.5)} strokeWidth={3} color="gray" />
+              </View>
+            </View>
+
+
 
         {/* categories */}
         <View>
