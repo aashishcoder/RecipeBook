@@ -6,7 +6,7 @@ import { Image } from 'expo-image';
 
 
 
-// using asycn storage (does not work with android properly: disk space is low)
+
 // export const CachedImage = (props) => {
 //     const [cachedSource, setCachedSource] = useState(null);
 //     const { uri } = props;
